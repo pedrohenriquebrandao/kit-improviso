@@ -72,7 +72,7 @@ class WordController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
          $word = Word::find($id);
          
@@ -91,11 +91,13 @@ class WordController extends Controller
     public function destroy(string $id)
     {
         $word = Word::find($id);
+
+        //  dd($word);
         
         $word->delete();
         
         $words = Word::all();
         return view('words.index')->with('words', $words)
-            ->with('msg', "Palavra excluída com sucesso!");
+        ->with('msg', "Palavra excluída com sucesso!");
     }
 }
