@@ -1,7 +1,7 @@
-<x-app-layout>
+<x-guest-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pessoas') }}
+            {{ __('Palavras') }}
         </h2>
     </x-slot>
 
@@ -63,4 +63,4 @@
             @endempty
         </div>
     </div>
-</x-app-layout>
+</x-guest-layout>
