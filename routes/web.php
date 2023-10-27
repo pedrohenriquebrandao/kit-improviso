@@ -23,6 +23,8 @@ Route::get('/', function () {
 
 Route::resource('/users', UserController::class);
 Route::resource('/words', WordController::class);
+Route::get('/sugestoes',  [WordController::class, 'create']);
+Route::get('/concluido',  [WordController::class, 'sugestions-success']);
 
 Route::get('/sorteio-palavra', [DraftController::class, 'words']);
 Route::get('/sorteio-player', [DraftController::class, 'players']);
