@@ -1,4 +1,12 @@
-<x-guest-layout>
+<x-app-layout>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Palavras') }}
@@ -63,4 +71,15 @@
             @endempty
         </div>
     </div>
-</x-guest-layout>
+
+    <script>
+        @if(Session::has("success")) {
+            console.log("tem success");
+            toastr.success("{{ session('success') }}");
+        }
+        @elseif(Session::has("error")) {
+            toastr.error("{{ session('error') }}")
+        }
+        @endif
+    </script>
+</x-app-layout>

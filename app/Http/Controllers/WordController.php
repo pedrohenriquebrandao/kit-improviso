@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Word;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WordController extends Controller
 {
@@ -31,12 +32,22 @@ class WordController extends Controller
     {
         $word = new Word();
         $word->text = $request->input('text');
+
+        if (Word::where('text', $word->text)->count() > 0) {
+            return redirect()->back()->with('error','Esta palavra já foi sugerida!');    
+        } 
        
         $word->save();
         
         $words = Word::all();
-        return view('words.index')->with('words', $words)
-            ->with('msg', 'Palavra cadastrada com sucesso!');      
+
+        if(Auth::check()) { 
+            return redirect()->route('words.index')->with('words', $words) 
+            ->with('success', 'Palavra cadastrada com sucesso!');   
+        } 
+            
+        return redirect()->back()->with('success','Palavra cadastrada com sucesso!');    
+        
     }
 
     /**
