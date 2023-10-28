@@ -1,11 +1,3 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
 <div>
     <div class="p-4 bg-gray-800 text-white text-center">
         <h1 id="countdown" class="text-8xl pb-1">02:00</h1>
@@ -89,7 +81,7 @@
         const index = words.indexOf(random);
         
         if (words.length < 1) {
-            toastr.error("Todas as palavras já foram sorteadas!");
+            alert("Todas as palavras já foram sorteadas!");
             document.getElementById("word").innerHTML = "";
             document.getElementById("refresh").style.display = "block";
         }
