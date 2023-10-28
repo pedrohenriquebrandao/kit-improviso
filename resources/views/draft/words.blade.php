@@ -40,8 +40,8 @@
         document.getElementById("startCount").style.display = 'block';
         document.getElementById("stopCount").style.display = 'none';
 
-        var seconds = 5;
-        var mins = 0;
+        var seconds = 60;
+        var mins = 2;
 
         clearInterval(check);
         check = null;
@@ -52,7 +52,7 @@
         document.getElementById("startCount").style.display = 'none';
         document.getElementById("stopCount").style.display = 'block';
 
-        var seconds = 5;
+        var seconds = 60;
         var mins = minutes;
         var buzzer = document.getElementById('buzzer');
 
