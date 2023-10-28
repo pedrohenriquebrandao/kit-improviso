@@ -10,6 +10,7 @@
             <button onclick="stopCountdown()" class="px-6 py-2 mb-4 font-semibold rounded bg-red-500 hover:bg-red-700 text-white"
                 type="button">PARAR</button>
         </div>
+        <audio id="buzzer" src="{{ asset('storage/buzz.wav') }}"></audio>
     </div>
 </div>
 <x-guest-layout>
@@ -19,6 +20,7 @@
                 <div class="overflow-x-auto">
                     <button onclick="draft()" class="px-12 py-2 mb-4 font-semibold rounded bg-green-500 hover:bg-green-700 text-white"
                         type="button">SORTEAR PALAVRA</button>
+                    <audio id="bell" src="{{ asset('storage/bell.wav') }}"></audio>
                 </div>
             </div>
         </div>
@@ -38,8 +40,8 @@
         document.getElementById("startCount").style.display = 'block';
         document.getElementById("stopCount").style.display = 'none';
 
-        var seconds = 60;
-        var mins = 2;
+        var seconds = 5;
+        var mins = 0;
 
         clearInterval(check);
         check = null;
@@ -50,8 +52,9 @@
         document.getElementById("startCount").style.display = 'none';
         document.getElementById("stopCount").style.display = 'block';
 
-        var seconds = 60;
+        var seconds = 5;
         var mins = minutes;
+        var buzzer = document.getElementById('buzzer');
 
         function tick() {
             //This script expects an element with an ID = "counter". You can change that to what ever you want. 
@@ -66,6 +69,7 @@
                     updateCountdown(mins - 1);
                 } else {
                     stopCountdown();
+                    buzzer.play();
                 }
             }
         }
@@ -74,7 +78,9 @@
 
     function draft() {
         var random = words[Math.floor(Math.random() * words.length)];
-        console.log(words);
+        var bell = document.getElementById('bell');
+        
+        bell.play();
 
         document.getElementById("word").innerHTML = random;
 
