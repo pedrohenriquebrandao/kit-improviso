@@ -33,10 +33,14 @@
                                         </td>
 
                                         <td class="flex p-2 space-x-2 ">
-                                            <button type="button"
-                                                class="px-4 py-3 font-semibold rounded bg-blue-200 text-gray-800">Editar</button>
-                                            <button type="button"
-                                                class="px-4 py-3 font-semibold rounded bg-red-600 text-gray-100">Excluir</button>
+                                            {{-- <button type="button"
+                                                class="px-4 py-3 font-semibold rounded bg-blue-200 text-gray-800">Editar</button> --}}
+                                             <form action="{{route('users.destroy', $user->id)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                            
+                                                <button class="px-4 py-3 font-semibold rounded bg-red-600 text-gray-100" type="submit">Excluir</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -47,8 +47,8 @@
                                         </td>
 
                                         <td class="flex p-2 space-x-2">
-                                            <a href="#"
-                                                class="px-4 py-3 font-semibold rounded bg-blue-200 text-gray-800">Editar</a>
+                                            {{-- <a href="#"
+                                                class="px-4 py-3 font-semibold rounded bg-blue-200 text-gray-800">Editar</a> --}}
                                             <form action="{{route('words.destroy', $word->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
