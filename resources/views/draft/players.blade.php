@@ -1,3 +1,11 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 <x-guest-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -22,13 +30,14 @@
         document.getElementById("player").innerHTML = random;
 
         const index = players.indexOf(random);
-        players.splice(index, 1);
         console.log(players);
-
+        
         if(players.length < 1) {
-            alert("Acabaram os jogadores");
+            toastr.error("Todos os players já foram sorteados!");
             document.getElementById("player").innerHTML =  "";
             document.getElementById("refresh").style.display = "block";
         }
+
+        players.splice(index, 1);
     }
 </script>
