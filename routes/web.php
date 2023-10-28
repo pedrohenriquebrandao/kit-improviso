@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\DraftController;
+use App\Http\Controllers\PeopleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () {
 
 Route::resource('/users', UserController::class);
 Route::resource('/words', WordController::class);
+Route::resource('/people', PeopleController::class);
+
 Route::get('/sugestoes',  [WordController::class, 'create']);
 Route::get('/concluido',  [WordController::class, 'sugestions-success']);
 

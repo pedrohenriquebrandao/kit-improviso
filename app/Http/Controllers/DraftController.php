@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Word;
-use App\Models\User;
+use App\Models\People;
 
 class DraftController extends Controller
 {
@@ -20,7 +20,7 @@ class DraftController extends Controller
     }
 
     public function players() {
-        $players = User::all(); 
+        $players = People::all(); 
         $players_array = [];
 
         foreach($players as $p) {

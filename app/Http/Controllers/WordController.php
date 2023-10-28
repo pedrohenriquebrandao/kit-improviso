@@ -44,7 +44,7 @@ class WordController extends Controller
         if(Auth::check()) { 
             return redirect()->route('words.index')->with('words', $words) 
             ->with('success', 'Palavra cadastrada com sucesso!');   
-        } 
+        }
             
         return redirect()->back()->with('success','Palavra cadastrada com sucesso!');    
         
