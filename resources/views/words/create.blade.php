@@ -7,7 +7,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-    <form method="POST" action="{{ route('words.store') }}">
+    <form class="mt-32" method="POST" action="{{ route('words.store') }}">
         @csrf
         <!-- Word -->
         <div>
@@ -17,8 +17,8 @@
             <x-input-error :messages="$errors->get('word')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="ml-4">
+        <div class="flex justify-center mt-4">
+            <x-primary-button>
                 {{ __('Enviar') }}
             </x-primary-button>
         </div>
