@@ -1,8 +1,16 @@
 <div>
     <div class="p-4 bg-gray-800 text-white text-center">
-        <h1 id="countdown" class="text-8xl pb-1">02:00</h1>
+        <div>
+            <input class="text-gray-900 rounded-md" type="number" id="time-picker" name="time-picker" min="1" max="5">
+            <button onclick="setCountdown()"
+                id="set-time"
+                class="px-2 py-2 mb-4 font-semibold rounded bg-blue-500 hover:bg-blue-700 text-white"
+                type="button">SET</button>
+           </button>
+        </div>
+        <h1 id="countdown" class="text-8xl pb-1">00:00</h1>
         <div id="startCount" class="pt-3" class="text-center">
-            <button onclick="updateCountdown(2)"
+            <button onclick="startCountdown()"
                 class="px-6 py-2 mb-4 font-semibold rounded bg-purple-500 hover:bg-purple-700 text-white"
                 type="button">INICIAR</button>
         </div>
@@ -35,13 +43,28 @@
     var check = null;
     const counter = document.getElementById("countdown");
 
+    function setCountdown() {
+        var minutes = document.getElementById("time-picker").value;
+        document.getElementById("countdown").innerHTML = "0" + minutes + ":" + "00";
+        return minutes;
+    }
+
+    function startCountdown() {
+        if(setCountdown() && setCountdown() > 0) {
+            updateCountdown(setCountdown());
+        } else {
+            alert("Selecione o tempo!");
+            minutes = 0;
+            document.getElementById("countdown").innerHTML = "0" + minutes + ":" + "00";
+        }
+    }
 
     function stopCountdown() {
         document.getElementById("startCount").style.display = 'block';
         document.getElementById("stopCount").style.display = 'none';
 
         var seconds = 60;
-        var mins = 2;
+        var mins = document.getElementById("time-picker").value;
 
         clearInterval(check);
         check = null;
@@ -57,7 +80,7 @@
         var buzzer = document.getElementById('buzzer');
 
         function tick() {
-            //This script expects an element with an ID = "counter". You can change that to what ever you want. 
+            //This script expects an element with an ID = "counter". You can change that to what ever you want.
             var counter = document.getElementById("countdown");
             var current_minutes = mins - 1
             seconds--;
@@ -79,13 +102,13 @@
     function draft() {
         var random = words[Math.floor(Math.random() * words.length)];
         var bell = document.getElementById('bell');
-        
+
         bell.play();
 
         document.getElementById("word").innerHTML = random;
 
         const index = words.indexOf(random);
-        
+
         if (words.length < 1) {
             alert("Todas as palavras já foram sorteadas!");
             document.getElementById("word").innerHTML = "";
