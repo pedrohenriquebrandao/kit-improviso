@@ -34,7 +34,7 @@ Route::get('/sorteio-palavra', [DraftController::class, 'words']);
 Route::get('/sorteio-player', [DraftController::class, 'players']);
 
 Route::get('/votacao', [VoteController::class, 'index']);
-Route::post('/votacao', [VoteController::class, 'store']);
+Route::post('/votacao', [VoteController::class, 'store'])->name('vote');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
