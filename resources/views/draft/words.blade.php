@@ -23,7 +23,7 @@
                 <div class="overflow-x-auto">
                     <button onclick="draft()" class="px-12 py-2 mb-4 font-semibold rounded bg-green-500 hover:bg-green-700 text-white"
                         type="button" id="sortear">SORTEAR PALAVRA</button>
-                    <audio id="bell" src="{{ asset('storage/bell.wav') }}"></audio>
+                    <audio id="bell" src="{{ asset('storage/bell.mp3') }}"></audio>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
     <button id="refresh" onclick="location.reload(true);"
         class="hidden px-12 py-2 mb-4 font-semibold rounded border-blue-500 bg-white text-blue-500 hover:bg-blue-500 border-2 hover:text-white" type="button">Reiniciar?
     </button>
-    
+
     <audio id="laugh" src="{{ asset('storage/risada-de-fundo-de-chaves.mp3') }}"></audio>
 </x-guest-layout>
 

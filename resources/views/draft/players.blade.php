@@ -30,14 +30,13 @@
             <div class="container p-2 mt-6 mx-auto sm:p-4 text-gray-100">
                 <div class="overflow-x-auto">
                     <button onclick="draft()" class="px-12 py-2 mb-4 font-semibold rounded bg-green-500 text-white" type="button">SORTEAR PLAYER</button>
-                    <audio id="bell" src="{{ asset('storage/bell.wav') }}"></audio>
+                    <audio id="bell" src="{{ asset('storage/bell.mp3') }}"></audio>
                 </div>
             </div>
         </div>
     </div>
         <h1 id="player" class="uppercase" style="color: black; font-size: 8rem"></h1>
         <button id="refresh" onclick="location.reload(true);" class="hidden px-12 py-2 mb-4 font-semibold rounded bg-blue-500 text-white" type="button">Reiniciar?</button>
-                            <audio id="bell" src="{{ asset('storage/bell.wav') }}"></audio>
 
         <audio id="laugh" src="{{ asset('storage/risada-de-fundo-de-chaves.mp3') }}"></audio>
 </x-guest-layout>
@@ -110,7 +109,7 @@
 
         const index = players.indexOf(random);
         console.log(players);
-        
+
         if(players.length < 1) {
             toastr.error("Todos os players já foram sorteados!");
             document.getElementById("player").innerHTML =  "";
@@ -146,5 +145,5 @@
             bell.play();
         }
     }
-    
+
 </script>

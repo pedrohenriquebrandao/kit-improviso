@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\DraftController;
 use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,9 @@ Route::get('/concluido',  [WordController::class, 'sugestions-success']);
 
 Route::get('/sorteio-palavra', [DraftController::class, 'words']);
 Route::get('/sorteio-player', [DraftController::class, 'players']);
+
+Route::get('/votacao', [VoteController::class, 'index']);
+Route::post('/votacao', [VoteController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
