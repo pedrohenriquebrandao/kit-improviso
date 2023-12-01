@@ -2,17 +2,12 @@
     <div class="p-4 bg-gray-800 text-white text-center">
         <div>
             <input class="text-gray-900 rounded-md" type="number" id="time-picker" name="time-picker" min="1" max="5">
-            <button onclick="setCountdown()"
-                id="set-time"
-                class="px-2 py-2 mb-4 font-semibold rounded bg-blue-500 hover:bg-blue-700 text-white"
-                type="button">SET</button>
-           </button>
         </div>
         <h1 id="countdown" class="text-8xl pb-1">00:00</h1>
         <div id="startCount" class="pt-3" class="text-center">
             <button onclick="startCountdown()"
                 class="px-6 py-2 mb-4 font-semibold rounded bg-purple-500 hover:bg-purple-700 text-white"
-                type="button">INICIAR</button>
+                type="button" id="iniciar">INICIAR</button>
         </div>
         <div hidden id="stopCount" class="pt-3" class="text-center">
             <button onclick="stopCountdown()" class="px-6 py-2 mb-4 font-semibold rounded bg-red-500 hover:bg-red-700 text-white"
@@ -27,7 +22,7 @@
             <div class="container p-2 mt-6 mx-auto sm:p-4 text-gray-100">
                 <div class="overflow-x-auto">
                     <button onclick="draft()" class="px-12 py-2 mb-4 font-semibold rounded bg-green-500 hover:bg-green-700 text-white"
-                        type="button">SORTEAR PALAVRA</button>
+                        type="button" id="sortear">SORTEAR PALAVRA</button>
                     <audio id="bell" src="{{ asset('storage/bell.wav') }}"></audio>
                 </div>
             </div>
@@ -35,7 +30,10 @@
     </div>
     <h1 id="word" class="uppercase" style="color: black; font-size: 8rem"></h1>
     <button id="refresh" onclick="location.reload(true);"
-        class="hidden px-12 py-2 mb-4 font-semibold rounded border-blue-500 bg-white text-blue-500 hover:bg-blue-500 border-2 hover:text-white" type="button">Reiniciar?</button>
+        class="hidden px-12 py-2 mb-4 font-semibold rounded border-blue-500 bg-white text-blue-500 hover:bg-blue-500 border-2 hover:text-white" type="button">Reiniciar?
+    </button>
+    
+    <audio id="laugh" src="{{ asset('storage/risada-de-fundo-de-chaves.mp3') }}"></audio>
 </x-guest-layout>
 
 <script>
@@ -116,5 +114,28 @@
         }
 
         words.splice(index, 1);
+    }
+
+    laugh = document.getElementById('laugh');
+
+    document.onkeypress = function (e) {
+        e = e || window.event;
+        console.log(e['key']);
+        if(e['key'] == "i" || e['key'] == "I") {
+            startCountdown();
+        }
+        else if(e['key'] == "p" || e['key'] == "P") {
+            stopCountdown();
+        }
+        else if(e['key'] == "s" || e['key'] == "S") {
+            draft();
+        }
+        else if(e['key'] > 0 && e['key'] < 6) {
+            document.getElementById('time-picker').value = e['key'];
+            stopCountdown();
+        }
+        else if(e['key'] == "r" || e['key'] == "R") {
+            laugh.play();
+        }
     }
 </script>
